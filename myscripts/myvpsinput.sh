@@ -50,6 +50,8 @@ $IPTABLES -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
 # for mail services
 $IPTABLES -A INPUT -p tcp -m tcp --dport $SMTPPORT -j ACCEPT
 
+# for xrdp services
+
 # for ntp
 
 #grep ^server $NTPDCONFIG  | awk '{print $2}' | \
