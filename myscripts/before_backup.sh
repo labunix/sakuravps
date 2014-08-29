@@ -14,6 +14,8 @@ for TARGET in myscripts mydata;do
   if [ "$FLAG" -eq "0" ];then
     echo "mount..."
     test -d ${CHROOT_DIR}/${TARGET} || mkdir -p ${CHROOT_DIR}/${TARGET}
+    test -d ${CHROOT_DIR}/${TARGET} && chown -R ${USER}:${USER} ${CHROOT_DIR}/${TARGET}
+    test -d ${HOME_DIR}/${TARGET} && chown -R ${USER}:${USER} ${HOME_DIR}/${TARGET}
     if [ -d ${CHROOT_DIR}/${TARGET} -a -d ${HOME_DIR}/${TARGET} ] ;then
       mount --bind ${HOME_DIR}/${TARGET} ${CHROOT_DIR}/${TARGET}
       mount | grep ${TARGET} | awk '{print $3}'
